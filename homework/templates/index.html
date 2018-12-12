@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Mission to Mars</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+
+<body>
+  <div class="container-fluid">
+    <div class="jumbotron text-center">
+      <h1>Mission to Mars</h1>
+      <p>Learn More About Mars Today!</p>
+      <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Scrape New Data</a></p>
+    </div>
+    <h2>Latest Mars News</h2>
+    <br>
+    <h3>{{ data.news_title}}</h3>
+    <br>
+    <p>{{ data.news_p }}</p>
+    <br>
+    <h2>Featured Mars Image</h2>
+    <br>
+    <img src="{{ data.featured_image_url }}" alt="Featured Image">
+    <h3>Current Weather on Mars</h3>
+    <p>{{ data.latest_tweet}}</p>
+    {{data.table|safe}}
+    <br>
+    <div class="container">
+      <div class="row">
+      {% for item in data.hemispheres %}
+          <div class="col-md-6 col-sm-1">
+              <img src="{{ item[1] }}" alt="{{item[0]}}" height=300 width=300 class="img-responsive">
+              <div class="text-block"> 
+                <h4>{{item[0]}}</h4>
+              </div>
+          </div>
+          {% endfor %}
+      </div>
+  </div>
+  </div>
+  </div>
+</body>
+
+</html>
